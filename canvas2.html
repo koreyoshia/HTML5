@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #can{
+            /*height: 400px;*/
+            /*width: 400px;*/
+            /*不能把高和宽写在style中，导致不同步，正常要写在标签内，或者不写*/
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="can" ></canvas>
+    <script>
+        var oCan = document.getElementById("can");
+        var can = oCan.getContext("2d");
+        oCan.onmousedown = function(e){
+            can.beginPath();
+            can.moveTo(e.clientX,e.clientY);
+            oCan.onmousemove = function(e){
+                can.lineTo(e.clientX,e.clientY);
+                can.strokeStyle = "white";
+                can.lineWidth = "2";
+                can.stroke();
+            }
+        }
+        oCan.onmouseup = function () {
+            oCan.onmousemove = null;
+        }
+    </script>
+</body>
+</html>

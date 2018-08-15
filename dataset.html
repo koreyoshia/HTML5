@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" href="favico.ico" type="image/x-icon">
+    <!--网页标题图标引入-->
+</head>
+<body>
+    <div id="box" data-test="test" data-test1="test1"></div>
+    <script src="js/jquery-3.3.1.min-production.js"></script>
+    <script>
+        console.log($("#box").data());
+        var oBox = document.getElementById("box");
+        console.log(oBox.dataset.test);
+    </script>
+</body>
+</html>

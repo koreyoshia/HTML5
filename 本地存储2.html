@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        <!--可以利用setItem或者链式操作-->
+        localStorage.setItem("name","xiaohong");
+        localStorage.age = "20";
+        console.log(localStorage.getItem("name"));
+        console.log(localStorage.age);
+        localStorage.clear();
+    //    删除
+        sessionStorage.setItem();
+    //    同上
+
+    //    区别：
+    //     关闭当前会话时，sessionStorage自动消失，而localStorage依旧存在
+
+    </script>
+</body>
+</html>
