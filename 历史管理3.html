@@ -1,36 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <style>
-        .box{
-            height: 150px;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 2000px;
+        }
+
+        #nav {
+            height: 30px;
+        }
+
+        #nav li {
+            width: 100px;
+            height: 30px;
+            float: left;
+            list-style: none;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #nav a {
             width: 100%;
-            padding-top: 100px;
+            height: 100%;
+            display: block;
+            background: #cccccc;
         }
-        #box1{
-            background: #e5a8de;
+
+        div {
+            height: 400px;
         }
-        #box2{
-            background: #a5dcff;
+
+        #div1 {
+            background: #ff0000;
+            margin-top: 300px;
         }
-        #box3{
-            background: #f1f27b;
+
+        #div2 {
+            background: #00ff00;
+        }
+
+        #div3 {
+            background: #ffff00;
         }
     </style>
 </head>
+
 <body>
-    <span id="link_one"><a href="#">link_one</a></span>
-    <span id="link_two"><a href="#">link_two</a></span>
-    <span id="link_three"><a href="#">link_three</a></span>
-    <div class="box" id="box1"></div>
-    <div class="box" id="box2"></div>
-    <div class="box" id="box3"></div>
+    <ul id="nav">
+        <li>
+            <a href="#div1">Link One</a>
+        </li>
+        <li>
+            <a href="#div2">Link Two</a>
+        </li>
+        <li>
+            <a href="#div3">Link Three</a>
+        </li>
+    </ul>
 
-    <script src="jquery-3.3.1.min-production.js"></script>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+
+    <script src="js/jquery-3.3.1.min-production.js"></script>
+
     <script>
+        $(function () {
+            $('#nav a').on('click', function () {
+                var id = $(this).attr('href');
+                $('body, html').animate({
+                    scrollTop: $(id).offset().top
+                }, 500);
 
+                history.pushState($(id).offset().top, '');
+                console.log(history.state);
+                return false; // 阻止默认行为
+            });
+        });
+
+        window.onpopstate = function (e) {
+            console.log(history.state);
+            $('body, html').animate({
+                scrollTop: e.state
+            }, 500);
+        };
+
+
+        // document.body.scrollTop || document.documentElement.scrollTop
     </script>
 </body>
+
 </html>
